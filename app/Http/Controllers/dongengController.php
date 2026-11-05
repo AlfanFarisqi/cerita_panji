@@ -65,10 +65,7 @@ class dongengController extends Controller
             $data = Cache::remember('dongeng_all', 300, function () {
                 return dongengModel::all();
             });
-            return response()->json([
-                'data' => $data ,
-                'status' => 'testing'
-            ], 200);
+            return response()->json($data , 200);
         }catch(\Exception $e){
             return response()->json([
                 'message' => 'Internal Server Error: ' . $e->getMessage(),
